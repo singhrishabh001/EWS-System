@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application View</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+            padding:40px;
+        }
+
+        .container{
+            width:70%;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:30px;
+        }
+
+        .row{
+            margin-bottom:20px;
+        }
+
+        .label{
+            font-weight:bold;
+        }
+
+        img{
+            width:150px;
+            height:150px;
+            object-fit:cover;
+            border-radius:10px;
+            border:2px solid gray;
+        }
+
+        .btn{
+            display:inline-block;
+            padding:12px 20px;
+            border:none;
+            border-radius:8px;
+            color:white;
+            cursor:pointer;
+            font-size:16px;
+            margin-top:20px;
+        }
+
+        .approve{
+            background:green;
+        }
+
+        .reject{
+            background:red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Application Details</h2>
+
+    <div class="row">
+        <span class="label">Name :</span>
+        <span th:text="${app.fullName}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Father Name :</span>
+        <span th:text="${app.fatherName}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">DOB :</span>
+        <span th:text="${app.dob}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Mobile No :</span>
+        <span th:text="${app.mobile_no}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Address :</span>
+        <span th:text="${app.address}"></span>
+    </div>
+
+
+    <div class="row">
+        <span class="label">Aadhar :</span>
+        <span th:text="${app.aadhar}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Income :</span>
+        <span th:text="${app.income}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Gender :</span>
+        <span th:text="${app.gender}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Photo :</span>
+        <br><br>
+
+        <img th:src="@{'/uploads/photos/' + ${app.photo}}">
+    </div>
+
+    <div class="row">
+        <span class="label">Income Certificate :</span>
+
+        <br><br>
+
+        <a th:href="@{'/uploads/income/' + ${app.incomeCertificate}}"
+           target="_blank">
+
+            View Income Certificate
+
+        </a>
+    </div>
+
+    <a th:href="@{/approve-application/{id}(id=${app.id})}"  class="btn approve">
+        Approve
+    </a>
+
+    <button onclick="openRejectBox()"
+            class="btn reject">
+        Reject
+    </button>
+
+    <div id="rejectBox"
+         style="display:none; margin-top:20px;">
+
+        <form action="/reject-application"
+              method="post">
+
+            <input type="hidden"
+                   name="id"
+                   th:value="${app.id}">
+
+            <textarea
+                    name="reason"
+
+                    placeholder="Enter Reject Reason"
+
+                    style="
+                width:100%;
+                height:120px;
+                padding:10px;
+                ">
+        </textarea>
+
+            <br><br>
+
+            <button type="submit"
+                    class="btn reject">
+
+                Final Reject
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+</div>
+<script>
+
+    function openRejectBox(){
+
+        document.getElementById("rejectBox").style.display = "block";
+    }
+
+</script>
+</body>
+</html>

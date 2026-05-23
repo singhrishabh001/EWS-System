@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Status</title>
+
+    <style>
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        }
+
+        body{
+        font-family:Arial;
+        background:#f4f6f9;
+        }
+
+        .navbar{
+        background:#111;
+        padding:15px 30px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:wrap;
+        }
+
+        .logo{
+        color:white;
+        font-size:28px;
+        font-weight:bold;
+        }
+
+        .menu a{
+        color:white;
+        text-decoration:none;
+        margin-left:18px;
+        padding:8px 12px;
+        border-radius:6px;
+        }
+
+        .menu a:hover{
+        background:#dc3545;
+        }
+
+        .container{
+        padding:30px;
+        }
+
+        h2{
+        margin-bottom:20px;
+        }
+
+        .table-container{
+           overflow-x:auto;
+            }
+
+            table{
+               min-width:700px;
+               }
+
+        table{
+        width:100%;
+        background:white;
+        border-collapse:collapse;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        th,td{
+        padding:15px;
+        text-align:center;
+        border-bottom:1px solid #ddd;
+        }
+
+        th{
+        background:#0d6efd;
+        color:white;
+        }
+
+        .view{
+        background:#28a745;
+        color:white;
+        padding:8px 14px;
+        text-decoration:none;
+        border-radius:6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">Your Applications</div>
+
+    <div class="menu">
+
+        <a href="/logoutUser" style="color:red">Logout</a>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <h2>Applications</h2>
+ <div class="table-container">
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>View</th>
+        </tr>
+
+        <tr th:each="app : ${applications}" >
+            <td th:text="${app.id}"></td>
+            <td th:text="${app.fullName}"></td>
+            <td th:text="${app.status}"></td>
+<!--            <td>-->
+<!--                <a th:href="@{'/view-application/' + ${app.id}}"class="view">View</a>-->
+<!--            </td>-->
+            <td>
+                <a th:if="${app.status == 'Approved'}"
+                th:href="@{'/certificates/' + ${app.certificateFile}}" download class="view">
+                    Download PDF
+                </a>
+                <details th:if="${app.status == 'Rejected'}">
+                    <summary style="
+                                   color:red;
+                                   cursor: pointer;
+                                   font-weight:bold;">
+                        Reject Reason
+                    </summary>
+                    <p style="margin-top: 10px;
+                              color:red;">
+                        <span th:text="${app.rejectReason}"></span>
+                    </p>
+                </details>
+            </td>
+
+        </tr>
+
+    </table>
+ </div>
+
+</div>
+
+
+</body>
+</html>

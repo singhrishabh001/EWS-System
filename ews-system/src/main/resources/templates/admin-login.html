@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+
+    <style>
+        body{
+        margin:0;
+        font-family:Arial;
+        background:#ffebee;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        }
+
+        .box{
+        background:white;
+        padding:40px;
+        width:380px;
+        border-radius:15px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        h2{
+        text-align:center;
+        color:#dc3545;
+        margin-bottom:20px;
+        }
+
+        input{
+        width:100%;
+        padding:12px;
+        margin-bottom:15px;
+        border:1px solid #ccc;
+        border-radius:8px;
+        }
+
+        button{
+        width:100%;
+        padding:12px;
+        background:#dc3545;
+        color:white;
+        border:none;
+        border-radius:8px;
+        font-size:18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Admin Login</h2>
+
+    <form action="/adminlogins" method="POST">
+        <input type="text" name="email" id="adminid" placeholder="Enter Admin ID" required>
+
+        <input type="password" name="password" id="password" placeholder="Enter Password" required>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p th:text="${error}"
+    style="color:red"></p>
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EWS Apply Form</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:#f4f6f9;
+        }
+
+        .navbar{
+            background:#111;
+            color:white;
+            padding:18px 50px;
+            font-size:28px;
+            font-weight:bold;
+        }
+
+        .container{
+            width:90%;
+            max-width:700px;
+            margin:40px auto;
+            background:white;
+            padding:35px;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:25px;
+            color:#222;
+        }
+
+        .form-group{
+            margin-bottom:18px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:8px;
+            font-weight:bold;
+        }
+
+        input, select, textarea{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        textarea{
+            resize:none;
+            height:90px;
+        }
+
+        .btn{
+            width:100%;
+            background:#0d6efd;
+            color:white;
+            border:none;
+            padding:14px;
+            font-size:18px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        .btn:hover{
+            background:#084dbf;
+        }
+
+        .note{
+            margin-top:15px;
+            text-align:center;
+            color:gray;
+            font-size:14px;
+        }
+
+        @media(max-width:768px){
+        .container{
+            width:95%;
+            padding:25px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    EWS Portal
+</div>
+
+<div class="container">
+
+    <h2>Apply for EWS Certificate</h2>
+
+    <form action="/saveApplication" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="fullName" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label>Father Name</label>
+            <input type="text" name="fatherName" placeholder="Enter father name">
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" name="dob">
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <select name="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="text" name="mobile_no" placeholder="Enter mobile number"
+                   maxlength="10"
+                   minlength="10"
+                   pattern="[0-9]{10}"
+                   required>
+
+        </div>
+
+        <div class="form-group">
+            <label>Aadhar Number</label>
+            <input type="text" name="aadhar" placeholder="Enter Aadhar number"
+                   maxlength="12"
+                   minlength="12"
+                   pattern="[0-9]{12}"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label>Annual Income</label>
+            <input type="text" name="income" placeholder="Enter annual income">
+        </div>
+
+        <div class="form-group">
+            <label>Address</label>
+            <textarea name="address" placeholder="Enter full address"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Upload Profil Photo</label>
+            <input type="file" name="photoFile">
+        </div>
+
+        <div class="form-group">
+            <label>Upload Income Certificate</label>
+            <input type="file" name="incomeFile">
+        </div>
+
+        <button type="submit" class="btn">Submit Application</button>
+
+    </form>
+
+    <div class="note">
+        After verification your certificate will be available for download.
+    </div>
+
+</div>
+
+</body>
+</html>

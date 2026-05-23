@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <title>EWS Certificate</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            padding:20px;
+        }
+
+        .certificate{
+
+            border:2px solid black;
+            padding:25px;
+        }
+
+        .title{
+
+            text-align:center;
+            font-size:35px;
+            font-weight:bold;
+
+            margin-bottom:40px;
+        }
+
+        table{
+
+            width:100%;
+        }
+
+        .details td{
+
+            padding:8px;
+            font-size:16px;
+        }
+
+        .label{
+
+            font-weight:bold;
+            width:200px;
+        }
+
+        .photo{
+
+            width:170px;
+            height:210px;
+
+            border:1px solid black;
+        }
+
+        .statement{
+
+            margin-top:20px;
+            border-top:1px solid black;
+            border-bottom:1px solid black;
+
+            padding:15px;
+
+            font-size:15px;
+            line-height:28px;
+        }
+
+        .bottom{
+
+            margin-top:50px;
+            width:100%;
+        }
+
+        .bottom td{
+
+            font-size:18px;
+
+        }
+
+        .approved{
+
+            color:green;
+            text-align:right;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="certificate">
+
+    <div class="title">
+
+        EWS CERTIFICATE
+
+    </div>
+
+    <table>
+
+        <tr>
+
+            <td width="70%" valign="top">
+
+                <table class="details">
+
+                    <tr>
+
+                        <td class="label">
+                            Certificate No :
+                        </td>
+
+                        <td th:text="${app.id}">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Name :
+                        </td>
+
+                        <td th:text="${app.fullName}">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Father's Name :
+                        </td>
+
+                        <td th:text="${app.fatherName}">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Date Of Birth :
+                        </td>
+
+                        <td th:text="${app.dob}">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="label">
+                            Address :
+                        </td>
+
+                        <td th:text="${app.address}">
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </td>
+
+            <td width="30%" align="right" valign="top">
+
+                <img class="photo"
+
+                     th:src="'data:image/jpeg;base64,' + ${photoPath}"/>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <div class="statement">
+
+        <b>
+            EWS Qualification and Income Details :
+        </b>
+
+        <br/><br/>
+
+        It is certified that the family income limit of <span th:text="${app.fullName} " style="font-weight:600"> </span> is according to the standards of the
+        Economically Weaker Section (EWS). Their total annual income is less than Rs 800,000.
+        The family's assets are also within the required standards.
+
+        <br/>
+
+    </div>
+
+    <table class="bottom">
+
+        <tr>
+
+            <td>
+
+                Date :
+                <span th:text="${app.date}">
+                </span>
+
+            </td>
+
+            <td class="approved" style="font-weight:bold">
+
+                APPROVED
+
+            </td>
+
+        </tr>
+
+    </table>
+
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+
+    <style>
+        body{
+        margin:0;
+        font-family:Arial;
+        background:#e8f5e9;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        }
+
+        .box{
+        background:white;
+        padding:40px;
+        width:400px;
+        border-radius:15px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        h2{
+        text-align:center;
+        color:#28a745;
+        margin-bottom:20px;
+        }
+
+        input{
+        width:100%;
+        padding:12px;
+        margin-bottom:15px;
+        border:1px solid #ccc;
+        border-radius:8px;
+        }
+
+        button{
+        width:100%;
+        padding:12px;
+        background:#28a745;
+        color:white;
+        border:none;
+        border-radius:8px;
+        font-size:18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Create New Account</h2>
+
+    <form action="/registers" method="post">
+        <input type="text"name="name" placeholder="Full Name" required>
+
+        <input type="email"name="email" placeholder="Email" required>
+
+        <input type="text" name="mobile_no" placeholder="Mobile Number" required>
+
+        <input type="password" name="password" placeholder="Create Password" required>
+
+<!--        <input type="password" placeholder="Confirm Password" required>-->
+
+        <button type="submit">Register</button>
+    </form>
+
+</div>
+
+</body>
+</html>
