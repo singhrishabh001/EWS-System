@@ -42,10 +42,10 @@ public class ApplicationController {
         File photoFolder =new File(System.getProperty("user.dir") + "/uploads/photos/");
         File incomeFolder =new File(System.getProperty("user.dir") + "/uploads/income/");
         if (!photoFolder.exists()){
-            photoFolder.mkdir();
+            photoFolder.mkdirs();
         }
         if (!incomeFolder.exists()){
-            incomeFolder.mkdir();
+            incomeFolder.mkdirs();
         }
 
 //yaha jo user ne photoFileile bheji hai use folder path ke andar

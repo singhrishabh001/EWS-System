@@ -75,7 +75,7 @@ public class ApplicationService {
         String pdff =System.getProperty("user.dir") + "/uploads/certificates/";
         File pdfFolder = new File(pdff);
         if(!pdfFolder.exists()){
-            pdfFolder.mkdir();
+            pdfFolder.mkdirs();
         }
         String path = pdff + fileName;
         String photoPath =System.getProperty("user.dir") + "/uploads/photos/" + app.getPhoto();
